@@ -34,9 +34,8 @@ public class App {
 			log.error("Can't parse the CSV File please check the file and the path");
 		}
 		int position = getMax(counter);
-		System.out.println("max position : " + getMax(counter));
 		final long duration = System.currentTimeMillis() - startTime;
-		log.info("IP winner : " + list.get(10));
+		log.info("IP winner : " + list.get(position));
 		log.info("Execution time : " + duration + " ms");
 	}
 	//Check if ip is in the list
@@ -52,12 +51,10 @@ public class App {
 
 	public static int getMax(List<Integer> list) {
 		int max = 0;
-		int maxPosition = 0;
 		for (int i = 0; i < list.size(); i++) {
-			if (list.get(i) > max) {
-				maxPosition = list.indexOf(list.get(i));
-			}
+			max = list.get(i) > max ? max = list.get(i) : max;
 		}
-		return maxPosition;
+		log.info("Nombre de réccurence de l'ip : " + max);
+		return list.indexOf(max);
 	}
 }
